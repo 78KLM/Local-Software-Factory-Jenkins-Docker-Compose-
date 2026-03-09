@@ -1,0 +1,20 @@
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins-server
+    # On se met en root pour avoir le droit de parler au Docker du PC
+    user: root 
+    ports:
+      # Le port 8080 pour accéder à l'interface web de Jenkins
+      - "8080:8080"
+      # Le port 50000 utilisé si on veut brancher d'autres machines esclaves à Jenkins plus tard
+      - "50000:50000"
+    volumes:
+      # On sauvegarde toutes les données de Jenkins (sur le ssd
+      - jenkins_home:/var/jenkins_home
+      # On relie le cerveau Docker du PC à l'intérieur du conteneur Jenkins
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  # Déclaration du volume de sauvegarde
+  jenkins_home:
