@@ -1,6 +1,6 @@
 services:
   jenkins:
-    image: jenkins/jenkins:lts
+    build: .
     container_name: jenkins-server
     # On se met en root pour avoir le droit de parler au Docker du PC
     user: root 

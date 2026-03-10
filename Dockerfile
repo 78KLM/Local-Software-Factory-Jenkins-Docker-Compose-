@@ -6,7 +6,7 @@ USER root
 
 # On installe le client Docker
 RUN apt-get update && \
-    apt-get install -y docker.io && \
+    apt-get install -y docker.io docker-compose && \
     rm -rf /var/lib/apt/lists/*
 
 # Pour la sécurité on ajoute l'utilisateur "jenkins" au groupe "docker"
